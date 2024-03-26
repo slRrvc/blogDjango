@@ -1,5 +1,5 @@
 from django.db import models
-
+from utils.model_validators import velidate_png
 
 class MenuLink(models.Model):
     class Meta:
@@ -34,6 +34,18 @@ class SiteSetup(models.Model):
     show_description = models.BooleanField(default=True, verbose_name = 'Mostrar descrição')
     show_pagination = models.BooleanField(default=True, verbose_name = 'Mostrar paginação')
     show_footer = models.BooleanField(default=True, verbose_name = 'Mostrar rodapé')
+
+    favicon =models.ImageField(
+        upload_to='assets/favicon/%Y/%m/',
+        blank=True,
+        default='',
+        validators=[velidate_png],
+    )
+ 
+    def save(self, *args, **kwargs):
+        current_favicon_name = str(self.favicon.name)
+        
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title

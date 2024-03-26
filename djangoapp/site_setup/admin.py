@@ -10,9 +10,9 @@ from site_setup.models import MenuLink, SiteSetup
 #     search_fields = 'text', 'url_or_path',
 
 
-class MenuLinkInLine(admin.TabularInline):
+class MenuLinkInLine(admin.StackedInline):
     model = MenuLink
-    extra = 1
+    extra = 0
 
 
 @admin.register(SiteSetup)
