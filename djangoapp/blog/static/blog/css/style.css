@@ -77,7 +77,7 @@ a {
 
 a:hover {
   color: hsl(var(--clr-primary-dk));
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 h1,
